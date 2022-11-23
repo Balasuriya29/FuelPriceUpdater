@@ -6,13 +6,11 @@ from datetime import datetime
 app = Flask(__name__)
 
 @app.route("/")
-# @app.route("/home")
+def home():
+    return render_template('index.html')
 
-# def home():
-#     return render_template('index.html')
-
-@app.route("/get_content")
-def get_content():
+@app.route("/petrolprices")
+def petrolprices():
     now = datetime.now()
     url = "https://www.ndtv.com/fuel-prices/petrol-price-in-all-state"
     response = requests.get(url).text
