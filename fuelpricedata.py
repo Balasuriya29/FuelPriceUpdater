@@ -1,14 +1,18 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+from datetime import date
 
 def get_content():
+    today = date.today()
     url = "https://www.ndtv.com/fuel-prices/petrol-price-in-all-state"
     response = requests.get(url).text
     soup = BeautifulSoup(response, "html.parser")
     table = soup.find_all("tr")[0:]
     states = {}
     
+    states["Date"] = str(today)
+
     for row in table:
         row = list(filter(lambda x: x != "\n", row))
         state_name = row[0].text
