@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json
-from datetime import date
+from datetime import datetime
 
 def get_content():
     now = datetime.now()
